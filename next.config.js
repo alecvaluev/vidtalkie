@@ -4,7 +4,7 @@ const nextConfig = {
   images:{
     domains: ['tvline.com', 'lh3.googleusercontent.com', 'cdn2.jazztimes.com']
   },
-  typescript; {
+  typescript: {
     ignoreBuildErrora: true,
 }
 
