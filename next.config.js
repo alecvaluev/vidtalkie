@@ -5,7 +5,7 @@ const nextConfig = {
     domains: ['tvline.com', 'lh3.googleusercontent.com', 'cdn2.jazztimes.com']
   },
   typescript: {
-    ignoreBuildErrora: true,
+    ignoreBuildErrors: true,
 }
 
 module.exports = nextConfig
