@@ -43,7 +43,7 @@ export default function Sidebar(){
                 </div>
                 {
                     !userProfile && (
-                        <div className='border-gray-200 xl:border-b-2 pb-4'>
+                        <div className='border-gray-200 xl:border-b-2 pb-4 hidden xl:block'>
                             <div className='flex flex-col items-center text-gray-500 font-semibold m-3'>
                                 <p className='m-3'>Log in to follow creators, like videos, and view comments.</p>
                                 <GoogleLogin 
