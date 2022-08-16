@@ -1,6 +1,9 @@
 //import from React and Next
 import React, { useState } from 'react';
 import Link from 'next/link';
+//import from others
+import { GoogleLogin } from '@react-oauth/google';
+import useAuthStore from '../store/authStore';
 //import components
 import Footer from './Footer';
 import SuggestedAccounts from './SuggestedAccounts';
@@ -10,10 +13,13 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 //import constants
 import { sidebarSections } from '../utils/constants';
+import { createOrGetUser } from '../utils';
 
 export default function Sidebar(){
+    const { userProfile, addUser} = useAuthStore();
+    
     const [showSidebar, setShowSidebar] = useState(true);
-    const userProfile = false;
+    /* const userProfile = false; */
     const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#6B2D5C] rounded';
     return(
     <div>
@@ -35,6 +41,18 @@ export default function Sidebar(){
                         ))
                     }
                 </div>
+                {
+                    !userProfile && (
+                        <div className='border-gray-200 xl:border-b-2 pb-4'>
+                            <div className='flex flex-col items-center text-gray-500 font-semibold m-3'>
+                                <p className='m-3'>Log in to follow creators, like videos, and view comments.</p>
+                                <GoogleLogin 
+                                onSuccess={(response) => createOrGetUser(response, addUser)}
+                                onError={() => console.log('Error')}/>
+                            </div>
+                        </div>
+                    )
+                }
                 <SuggestedAccounts/>
                 <Discover/>
                 <Footer/>
