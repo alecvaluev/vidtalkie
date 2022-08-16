@@ -1,6 +1,10 @@
 import { AiOutlineHome } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
-import { BsCameraVideo } from 'react-icons/bs';
+import { GiPalmTree } from 'react-icons/gi';
+import { BsCameraVideo, BsFlower3 } from 'react-icons/bs';
+import { MdOutlineTheaterComedy, MdOutlinePets, MdOutlineSportsBasketball } from 'react-icons/md';
+import { IoMusicalNotesOutline, IoRestaurantOutline, IoGameControllerOutline } from 'react-icons/io5';
+import { TbSwords } from 'react-icons/tb';
 
 export const fileTypes = ['video/mp4', 'video/webm', 'video.ogg'];
 
@@ -22,31 +26,40 @@ export const sidebarSections = [
 
 export const topics = [
   {
-    name: 'challenge'
+    name: 'challenge',
+    icon: <TbSwords/>
   },
   {
-    name: 'comedy'
+    name: 'comedy',
+    icon: <MdOutlineTheaterComedy />
   },
   {
-    name: 'gaming'
+    name: 'gaming',
+    icon: <IoGameControllerOutline />
   },
   {
-    name: 'food'
+    name: 'food',
+    icon: <IoRestaurantOutline/>
   },
   {
-    name: 'dance'
+    name: 'dance',
+    icon: <IoMusicalNotesOutline />
   },
   {
-    name: 'beauty'
+    name: 'beauty',
+    icon: <BsFlower3/>
   },
   {
-    name: 'animals'
+    name: 'animals',
+    icon: <MdOutlinePets />
   },
   {
-    name: 'sports'
+    name: 'sports',
+    icon: <MdOutlineSportsBasketball/>
   },
   {
-    name: 'summervibes'
+    name: 'summervibes',
+    icon: <GiPalmTree/>
   }
 ];
 
