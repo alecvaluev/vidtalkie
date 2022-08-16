@@ -23,7 +23,7 @@ export default function Sidebar(){
     const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#6B2D5C] rounded';
     return(
     <div>
-        <div className='block xl:hidden n-2 nl-4 mt-3 text-xl'
+        <div className='block xl:hidden n-2 nl-4 mt-3 text-xl ml-2'
             onClick={() => setShowSidebar((prev) => !prev)}>
             {showSidebar? <ImCancelCircle/> : <AiOutlineMenu/>}
         </div>
