@@ -21,11 +21,11 @@ const Discover = () => {
             {topics.map(elem => 
                 <Link href={`/?topic=${elem.name}`} key={elem.name}>
                     <div className={topic === elem.name? activeTopicStyle: topicStyle}>
-                        <span className='font-bold text-md xl:text-sm'>
-                            #
+                        <span className='xl:hidden block font-bold text-md'>
+                            {elem.icon}
                         </span>
                         <span className='text-md hidden xl:block'>
-                            {elem.name}
+                            #{elem.name}
                         </span>
                     </div>
                 </Link>)}
