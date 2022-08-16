@@ -24,7 +24,7 @@ function LikeButton({handleLike, handleDislike, likes}: IProps) {
   return (
     <div className='flex gap-6 m-1'>
       <div className='mt-4 flex items-center cursor-pointer'>
-        <div className={`bg-primary rounded-full p-3 justify-center ${alreadyLiked && `text-[#6B2D5C]`}`}
+        <div className={`rounded-full p-3 justify-center ${alreadyLiked? 'text-white bg-[#6B2D5C]': 'bg-primary'}`} 
               onClick={alreadyLiked? handleDislike : handleLike}>
               <MdFavorite className='text-lg md:text-2xl'/>
         </div>
