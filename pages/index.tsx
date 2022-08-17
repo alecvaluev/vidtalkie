@@ -7,6 +7,7 @@ import VideoCard from '../components/VideoCard'
 import NoResults from '../components/NoResults'
 //import utils
 import { BASE_URL } from '../utils'
+import BtnContainer from '../components/BtnContainer'
 
 interface IProps{
   videos: Video[]
@@ -15,11 +16,19 @@ interface IProps{
 const Home: NextPage = ( { videos }: IProps) => {
   console.log(videos);
   return (
-    <div className='flex flex-col gap-4 h-full'>
+    <div className='flex flex-col gap-3 h-full'>
       {
         videos.length ? 
           videos.map((video: Video) => (
-          <VideoCard post={video} key={video._id}/>
+          <div className='flex' key={video._id}>
+            <VideoCard post={video} key={video._id}/>
+            <span className=''>
+              <BtnContainer post={video} 
+                            handleLike={() => {}} 
+                            handleDislike={() => {}}
+                            col={true}/>
+            </span>
+          </div>
         ))
         : <NoResults text={'No Videos'}/>
       }
@@ -43,4 +52,4 @@ export const getServerSideProps = async ({ query: { topic }} :{
     }
   }
 }
-export default Home
+export default Home;
