@@ -96,7 +96,6 @@ export const getServerSideProps = async(
         params: { searchTerm: string }
     }) => {
         const res = await axios.get(`${BASE_URL}/api/search/${searchTerm}`);
-        console.log('ss', res);
         return { 
             props: {
                 videos: res.data
