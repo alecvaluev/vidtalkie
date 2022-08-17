@@ -1,5 +1,7 @@
 //import from React
 import React, { useState, useEffect} from 'react';
+//import components
+import SimpleButton from './SimpleButton';
 //import icons
 import { MdFavorite } from 'react-icons/md';
 //import others
@@ -8,10 +10,11 @@ import useAuthStore from '../store/authStore';
 interface IProps {
   handleLike: () => void,
   handleDislike: () => void,
-  likes: any[]
+  likes: any[],
+  col: boolean
 }
 
-function LikeButton({handleLike, handleDislike, likes}: IProps) {
+function LikeButton({handleLike, handleDislike, likes, col = false}: IProps) {
   const [alreadyLiked, setAlreadyLiked] = useState(true);
   const { userProfile }: any = useAuthStore();
   const filterLikes = likes?.filter(item => item._ref === userProfile?._id);
@@ -22,15 +25,9 @@ function LikeButton({handleLike, handleDislike, likes}: IProps) {
   }, [likes])
 
   return (
-    <div className='flex gap-6 m-1'>
-      <div className='mt-4 flex items-center cursor-pointer'>
-        <div className={`rounded-full p-3 justify-center ${alreadyLiked? 'text-white bg-[#6B2D5C]': 'bg-primary'}`} 
-              onClick={alreadyLiked? handleDislike : handleLike}>
-              <MdFavorite className='text-lg md:text-2xl'/>
-        </div>
-        <p className='text-md font-semibold px-2'>{likes?.length | 0}</p>
-      </div>
-    </div>
+    <span onClick={alreadyLiked? handleDislike : handleLike}>
+      <SimpleButton count={likes?.length} icon={<MdFavorite/>} clicked={alreadyLiked} col={col} />
+    </span>
   )
 }
 
