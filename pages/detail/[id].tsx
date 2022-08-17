@@ -18,6 +18,7 @@ import useAuthStore from '../../store/authStore';
 //import utils and types
 import { BASE_URL } from '../../utils';
 import { Video } from '../../types';
+import BtnContainer from '../../components/BtnContainer';
 
 interface IProps {
   postDetails: Video
@@ -126,7 +127,7 @@ function Detail({ postDetails }: IProps) {
 
       {/* right part of the screen */}
       <div className='relative w-[1000px] md:w-[900px] lg:w-[700px]'>
-          <div className='lg:mt-20 mt-10'>
+          <div className='mt-10'>
 
 
             <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded'>
@@ -157,18 +158,11 @@ function Detail({ postDetails }: IProps) {
 
             {/* caption */}
             <p className='px-10 text-md text-gray-600'>{post.caption}</p>
-            <div className='flex mt-10 px-10'>
-                {
-                  userProfile && (
-                    <LikeButton handleLike={() => handleLike(true)}
-                                handleDislike={() => handleLike(false)}
-                                likes={post.likes}/>
-                  )
-                }
-                {
-                  userProfile && <CommentsButton comments={post.comments}/>
-                }
-            </div>
+            <BtnContainer post={post}
+                          handleLike={userProfile ? () => handleLike(true) : () => {}}
+                          handleDislike={userProfile ? () => handleLike(false) : () => {}}
+                          col={false}
+                          />
             {/* comments */}
             <Comments
               comment={comment}
@@ -196,4 +190,4 @@ export const getServerSideProps = async ({
   }
 }
 
-export default Detail
+export default Detail;
