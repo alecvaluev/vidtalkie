@@ -1,5 +1,5 @@
 //import types
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import axios from 'axios';
 import { Video } from '../types';
@@ -17,9 +17,8 @@ interface IProps{
 }
 
 const Home: NextPage = ( { videos }: IProps) => {
-  const [posts, setPost] = useState(videos);
   const { userProfile }: any = useAuthStore();
-
+  const [reload, setReload] = useState(false);
   
   const handleLike = async (like: boolean, video : Video) => {
     if(userProfile) {
@@ -28,17 +27,23 @@ const Home: NextPage = ( { videos }: IProps) => {
         postId: video._id,
         like
       });
-      const videoIdx = posts.findIndex((post : Video) => post._id === video._id);
-      const post = posts[videoIdx];
-      setPost([...posts, post]);
+      
+      const videoIdx = videos.findIndex((post : Video) => post._id === video._id);
+      videos[videoIdx].likes = data.likes;
+      setReload(true);
     }
   }
+
+  useEffect(() => {
+    setReload(false);
+
+  }, [reload]);
 
   return (
     <div className='flex flex-col gap-3 h-full'>
       {
-        posts.length ? 
-          posts.map((video: Video) => (
+        videos.length ? 
+          videos.map((video: Video) => (
           <div className='flex' key={video._id}>
             <VideoCard post={video} key={video._id}/>
             <BtnContainer post={video} 
