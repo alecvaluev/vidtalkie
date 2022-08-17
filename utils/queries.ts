@@ -59,7 +59,7 @@ export const allPostsQuery = () => {
   };
   
   export const searchPostsQuery = (searchTerm: string | string[]) => {
-    const query = `*[_type == "post" && caption match '${searchTerm}*' || topic match '${searchTerm}*'] {
+    const query = `*[_type == "post" && (caption match '${searchTerm}*' || topic match '${searchTerm}*')] {
       _id,
        caption,
          video{
