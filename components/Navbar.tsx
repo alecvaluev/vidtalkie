@@ -13,8 +13,6 @@ import useAuthStore from '../store/authStore';
 //import utils
 import { createOrGetUser } from '../utils';
 
-
-
 export default function Navbar(){
     const { userProfile, addUser, removeUser} = useAuthStore();
     const [searchValue, setSearchValue] = useState('')
