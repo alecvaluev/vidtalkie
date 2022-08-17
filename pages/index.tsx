@@ -41,12 +41,10 @@ const Home: NextPage = ( { videos }: IProps) => {
           posts.map((video: Video) => (
           <div className='flex' key={video._id}>
             <VideoCard post={video} key={video._id}/>
-            <span className=''>
-              <BtnContainer post={video} 
-                            handleLike={userProfile ? () => handleLike(true, video) : () => {}}
-                            handleDislike={userProfile ? () => handleLike(false, video) : () => {}}
-                            col={true}/>
-            </span>
+            <BtnContainer post={video} 
+                          handleLike={userProfile ? () => handleLike(true, video) : () => {}}
+                          handleDislike={userProfile ? () => handleLike(false, video) : () => {}}
+                          col={true}/>
           </div>
         ))
         : <NoResults text={'No Videos'}/>
@@ -71,4 +69,4 @@ export const getServerSideProps = async ({ query: { topic }} :{
     }
   }
 }
-export default Home;
+export default Home
