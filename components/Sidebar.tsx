@@ -20,7 +20,7 @@ export default function Sidebar(){
     
     const [showSidebar, setShowSidebar] = useState(true);
     /* const userProfile = false; */
-    const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#6B2D5C] rounded';
+    const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold rounded';
     return(
     <div className='border-r-2 border-gray-100'>
         <div className='block xl:hidden n-2 nl-4 pt-3 text-xl ml-2'
