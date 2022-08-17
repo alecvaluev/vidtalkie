@@ -24,9 +24,6 @@ export default function Search({videos}: { videos: Video[]}) {
     const { allUsers } = useAuthStore();
     const searchAccounts = allUsers.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    console.log('vids', videos);
-    console.log('seach', searchTerm);
-
   return (
     <div className='w-full'>
         <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full'>
