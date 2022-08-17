@@ -24,6 +24,9 @@ export default function Search({videos}: { videos: Video[]}) {
     const { allUsers } = useAuthStore();
     const searchAccounts = allUsers.filter((user: IUser) => user.userName.toLowerCase().includes(searchTerm.toLowerCase()));
 
+    console.log('vids', videos);
+    console.log('seach', searchTerm);
+
   return (
     <div className='w-full'>
         <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 bg-white w-full'>
@@ -44,24 +47,24 @@ export default function Search({videos}: { videos: Video[]}) {
                                 <Link href={`/profile/${user._id}`} key={idx}>
 
                                     <div className='flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200'>
-                                    <div >
-                                        <Image src={user.image}
-                                                width={50}
-                                                height={50}
-                                                className='rounded-full'
-                                                alt='user profile'
-                                                />
-                                    </div>
+                                        <div >
+                                            <Image src={user.image}
+                                                    width={50}
+                                                    height={50}
+                                                    className='rounded-full'
+                                                    alt='user profile'
+                                                    />
+                                        </div>
 
-                                    <div className='hidden xl:block'>
-                                        <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
-                                        {user.userName.replaceAll(' ', '')}
-                                        <GoVerified className='text-blue-400'/>
-                                        </p>
-                                        <p className='capitalize text-gray-400 text-xs'>
-                                        {user.userName}
-                                        </p>
-                                    </div>
+                                        <div>
+                                            <p className='flex gap-1 items-center text-md font-bold text-primary lowercase'>
+                                            {user.userName.replaceAll(' ', '')}
+                                            <GoVerified className='text-blue-400'/>
+                                            </p>
+                                            <p className='capitalize text-gray-400 text-xs'>
+                                            {user.userName}
+                                            </p>
+                                        </div>
                                     </div>
 
                                 </Link>
@@ -96,10 +99,10 @@ export const getServerSideProps = async(
         params: { searchTerm: string }
     }) => {
         const res = await axios.get(`${BASE_URL}/api/search/${searchTerm}`);
-
+        console.log('ss', res);
         return { 
             props: {
-                data: res.data
+                videos: res.data
             }
         }
     }
