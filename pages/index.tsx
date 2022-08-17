@@ -15,7 +15,7 @@ interface IProps{
 const Home: NextPage = ( { videos }: IProps) => {
   console.log(videos);
   return (
-    <div className='flex flex-col gap-10 h-full'>
+    <div className='flex flex-col gap-4 h-full'>
       {
         videos.length ? 
           videos.map((video: Video) => (
