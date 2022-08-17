@@ -22,13 +22,13 @@ export default function Sidebar(){
     /* const userProfile = false; */
     const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#6B2D5C] rounded';
     return(
-    <div>
-        <div className='block xl:hidden n-2 nl-4 mt-3 text-xl ml-2'
+    <div className='border-r-2 border-gray-100'>
+        <div className='block xl:hidden n-2 nl-4 pt-3 text-xl ml-2'
             onClick={() => setShowSidebar((prev) => !prev)}>
             {showSidebar? <ImCancelCircle/> : <AiOutlineMenu/>}
         </div>
         {showSidebar && (
-            <div className='xl:w-400 w-20 flex flex-col justify-start mb-10 borber-r-2 border-gray-100 xl:border-0 p-3 overflow-auto'>
+            <div className='xl:w-400 w-20 flex flex-col justify-start mb-10 xl:border-0 p-3 overflow-auto'>
                 <div className='xl:border-b-2 border-gray-200 xl:pb-2'>
                     {
                         sidebarSections.map((section, idx) => (
