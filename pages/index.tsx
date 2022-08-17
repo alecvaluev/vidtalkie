@@ -1,4 +1,5 @@
 //import types
+import { useState } from 'react';
 import type { NextPage } from 'next';
 import axios from 'axios';
 import { Video } from '../types';
@@ -8,24 +9,42 @@ import NoResults from '../components/NoResults';
 //import utils
 import { BASE_URL } from '../utils';
 import BtnContainer from '../components/BtnContainer';
+//import others
+import useAuthStore from '../store/authStore';
 
 interface IProps{
   videos: Video[]
 }
 
 const Home: NextPage = ( { videos }: IProps) => {
-  console.log(videos);
+  const [posts, setPost] = useState(videos);
+  const { userProfile }: any = useAuthStore();
+
+  
+  const handleLike = async (like: boolean, video : Video) => {
+    if(userProfile) {
+      const {data} = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: video._id,
+        like
+      });
+      const videoIdx = posts.findIndex((post : Video) => post._id === video._id);
+      const post = posts[videoIdx];
+      setPost([...posts, post]);
+    }
+  }
+
   return (
     <div className='flex flex-col gap-3 h-full'>
       {
-        videos.length ? 
-          videos.map((video: Video) => (
+        posts.length ? 
+          posts.map((video: Video) => (
           <div className='flex' key={video._id}>
             <VideoCard post={video} key={video._id}/>
             <span className=''>
               <BtnContainer post={video} 
-                            handleLike={() => {}} 
-                            handleDislike={() => {}}
+                            handleLike={userProfile ? () => handleLike(true, video) : () => {}}
+                            handleDislike={userProfile ? () => handleLike(false, video) : () => {}}
                             col={true}/>
             </span>
           </div>
