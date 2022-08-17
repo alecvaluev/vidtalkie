@@ -1,13 +1,13 @@
 //import types
-import type { NextPage } from 'next'
-import axios from 'axios'
-import { Video } from '../types'
+import type { NextPage } from 'next';
+import axios from 'axios';
+import { Video } from '../types';
 //import components
-import VideoCard from '../components/VideoCard'
-import NoResults from '../components/NoResults'
+import VideoCard from '../components/VideoCard';
+import NoResults from '../components/NoResults';
 //import utils
-import { BASE_URL } from '../utils'
-import BtnContainer from '../components/BtnContainer'
+import { BASE_URL } from '../utils';
+import BtnContainer from '../components/BtnContainer';
 
 interface IProps{
   videos: Video[]
