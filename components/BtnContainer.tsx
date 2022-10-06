@@ -14,7 +14,7 @@ interface IProps {
 
 const BtnContainer = ({post, handleLike, handleDislike, col}: IProps) => {
     return (
-        <div className={`flex ${col? 'flex-col justify-end mb-10 -ml-20': 'px-10'} mt-5`}>
+        <div className={`flex ${col? 'flex-col justify-end mb-10 -ml-16': 'px-10'} mt-5`}>
             <LikeButton handleLike={handleLike}
                         handleDislike={handleDislike}
                         likes={post.likes}
