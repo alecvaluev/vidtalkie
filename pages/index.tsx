@@ -40,11 +40,11 @@ const Home: NextPage = ( { videos }: IProps) => {
   }, [reload]);
 
   return (
-    <div className='flex flex-col gap-3 h-full overflow-visible'>
+    <div className='flex flex-col gap-3 h-full'>
       {
         videos.length ? 
           videos.map((video: Video) => (
-          <div className='flex' key={video._id}>
+          <div className='flex flex-col' key={video._id}>
             <VideoCard post={video} key={video._id}/>
             <BtnContainer post={video} 
                           handleLike={userProfile ? () => handleLike(true, video) : () => {}}
