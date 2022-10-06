@@ -20,10 +20,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <div className='xl:w-[1200px] m-auto overflow-hidden h-[100vh]'>
         <Navbar/>
         <div className='flex md:gap-20'>
-          <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
+          <div className='h-[92vh] xl:hover:overflow-auto'>
             <Sidebar/>
           </div>
-          <div className="mt-4 flex flex-col gap-10 overflow-auto h-[88vh] videos flex-1">
+          <div className="mt-4 flex flex-col gap-10 overflow-auto h-[88vh] videos flex-1 overflow-hidden">
           <Component {...pageProps} />
           </div>
         </div>
