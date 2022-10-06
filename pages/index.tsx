@@ -40,7 +40,7 @@ const Home: NextPage = ( { videos }: IProps) => {
   }, [reload]);
 
   return (
-    <div className='flex flex-col gap-3 h-full'>
+    <div className='flex flex-col gap-3 h-full overflow-visible'>
       {
         videos.length ? 
           videos.map((video: Video) => (
