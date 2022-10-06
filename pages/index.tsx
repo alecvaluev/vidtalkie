@@ -46,10 +46,12 @@ const Home: NextPage = ( { videos }: IProps) => {
           videos.map((video: Video) => (
           <div className='flex flex-col' key={video._id}>
             <VideoCard post={video} key={video._id}/>
-            <BtnContainer post={video} 
-                          handleLike={userProfile ? () => handleLike(true, video) : () => {}}
-                          handleDislike={userProfile ? () => handleLike(false, video) : () => {}}
-                          col={true}/>
+            <div className='absolute bottom-0 right-0'>
+              <BtnContainer post={video} 
+                            handleLike={userProfile ? () => handleLike(true, video) : () => {}}
+                            handleDislike={userProfile ? () => handleLike(false, video) : () => {}}
+                            col={true}/>
+            <div>
           </div>
         ))
         : <NoResults text={'No Videos'}/>
